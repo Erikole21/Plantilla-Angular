@@ -1,0 +1,51 @@
+<h1>Alumno</h1>
+<button type="button" [routerLink]="['home']"
+  class="btn btn-danger btn-sm">Regresar</button>
+<hr>
+<div class="row">
+  <div class="col-md-12">
+
+      <form (ngSubmit)="guardar()" #forma="ngForm">
+
+            <div class="form-group">
+                <label>Numero Cedula</label>
+                <input type="text" [(ngModel)]="alumno.NumeroCedula"
+                        name="numeroCedula" class="form-control"
+                        required>
+              </div>
+
+              <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" [(ngModel)]="alumno.Nombre"
+                        name="nombre" class="form-control"
+                        required>
+              </div>
+              <div class="form-group">
+                  <label>Primer Apellido</label>
+                  <input type="text" [(ngModel)]="alumno.PrimerApellido"
+                          name="primerApellido" class="form-control"
+                          required>
+                </div>
+                <div class="form-group">
+                    <label>Segundo Apellido</label>
+                    <input type="text" [(ngModel)]="alumno.SegundoApellido"
+                            name="SegundoApellido" class="form-control">
+                  </div>
+               <div class="form-group">
+                  <label>Carrera</label>
+                  <select class="form-control" name="IdCarrera" [(ngModel)]="alumno.IdCarrera" required>
+                    <option *ngFor="let item of carreras" [value]="item.Id">{{ item.Nombre }}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <button
+                    [disabled]="!forma.valid"
+                  class="btn btn-primary" type="submit">Guardar</button>
+                </div>
+      </form>
+
+      <pre>
+        {{ alumno | json }}
+      </pre>
+  </div>
+</div>
